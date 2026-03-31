@@ -189,7 +189,7 @@ async function handleRegister() {
     @cancel="showCancelConfirm = false"
   />
 
-  <div v-else class="not-found">
+  <div v-if="!event" class="not-found">
     <p>Event not found.</p>
     <RouterLink to="/events">← Back to Events</RouterLink>
   </div>
