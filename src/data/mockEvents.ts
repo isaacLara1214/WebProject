@@ -1,0 +1,86 @@
+import type { Event } from '@/types'
+
+export const mockEvents: Event[] = [
+  {
+    id: 'e1',
+    organizerId: 'u1',
+    title: 'Spring Career Fair',
+    description:
+      'Meet recruiters from 50+ companies across tech, finance, and healthcare. Bring your resume and dress professionally.',
+    location: 'Student Center Ballroom',
+    dateTime: '2026-04-15T10:00:00',
+    capacity: 200,
+    category: 'career',
+    createdAt: '2026-03-01T08:00:00',
+  },
+  {
+    id: 'e2',
+    organizerId: 'u1',
+    title: 'Intro to Machine Learning Workshop',
+    description:
+      'Hands-on workshop covering supervised learning, neural networks, and model evaluation using Python and scikit-learn.',
+    location: 'College of Computing, Room 101',
+    dateTime: '2026-04-20T14:00:00',
+    capacity: 40,
+    category: 'academic',
+    createdAt: '2026-03-05T09:00:00',
+  },
+  {
+    id: 'e3',
+    organizerId: 'u2',
+    title: 'Intramural Basketball Tournament',
+    description:
+      'Annual 3-on-3 basketball tournament. Register your team of 3 players. Prizes for 1st and 2nd place.',
+    location: 'Recreation Center, Court A',
+    dateTime: '2026-04-22T09:00:00',
+    capacity: 60,
+    category: 'sports',
+    createdAt: '2026-03-10T10:00:00',
+  },
+  {
+    id: 'e4',
+    organizerId: 'u2',
+    title: 'End-of-Semester Social Mixer',
+    description:
+      'Wind down before finals with food, music, and lawn games. All students and faculty welcome.',
+    location: 'Campus Quad',
+    dateTime: '2026-04-28T17:00:00',
+    capacity: 150,
+    category: 'social',
+    createdAt: '2026-03-12T11:00:00',
+  },
+  // Past events — used to populate analytics with meaningful data
+  {
+    id: 'e5',
+    organizerId: 'u1',
+    title: 'Resume Writing Seminar',
+    description: 'Learn how to craft a compelling resume from career services professionals.',
+    location: 'Library, Room 205',
+    dateTime: '2026-03-10T13:00:00',
+    capacity: 30,
+    category: 'career',
+    createdAt: '2026-02-20T08:00:00',
+  },
+  {
+    id: 'e6',
+    organizerId: 'u2',
+    title: 'Python for Data Science Bootcamp',
+    description: 'Full-day bootcamp covering pandas, matplotlib, and data wrangling fundamentals.',
+    location: 'College of Computing, Lab 3',
+    dateTime: '2026-03-15T09:00:00',
+    capacity: 25,
+    category: 'academic',
+    createdAt: '2026-02-25T09:00:00',
+  },
+  {
+    id: 'e7',
+    organizerId: 'u1',
+    title: 'Networking Night',
+    description: 'Casual networking event with alumni and industry professionals.',
+    location: 'Student Center, Room 310',
+    dateTime: '2026-03-20T18:00:00',
+    capacity: 80,
+    category: 'career',
+    createdAt: '2026-03-01T10:00:00',
+  },
+]
