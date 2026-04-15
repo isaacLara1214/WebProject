@@ -23,7 +23,7 @@ if (!event.value) router.push('/events')
 const isOwner = computed(() => auth.currentUser?.id === event.value?.organizerId)
 
 // --- Organizer side ---
-const { code, qrDataUrl, generating, generate } = useCheckInCode(eventId)
+const { code, generating, generate } = useCheckInCode(eventId)
 const liveCheckInCount = computed(() => checkInsStore.checkInsForEvent(eventId).length)
 const registeredCount = computed(() => registrationsStore.registrationsForEvent(eventId).length)
 
@@ -81,7 +81,7 @@ const userCheckedIn = computed(() =>
       </div>
 
       <div v-if="!code" class="generate-section">
-        <p class="hint">Generate a check-in code for attendees to scan or enter.</p>
+        <p class="hint">Generate a check-in code for attendees to enter.</p>
         <button class="btn primary" :disabled="generating" @click="generate">
           {{ generating ? 'Generating…' : 'Generate Check-In Code' }}
         </button>
@@ -89,7 +89,6 @@ const userCheckedIn = computed(() =>
 
       <div v-else class="code-section">
         <div class="code-display">{{ code }}</div>
-        <img v-if="qrDataUrl" :src="qrDataUrl" alt="Check-in QR code" class="qr-code" />
         <button class="btn secondary small" @click="generate">Regenerate Code</button>
       </div>
     </div>
@@ -243,13 +242,6 @@ const userCheckedIn = computed(() =>
   border-radius: 10px;
   color: var(--color-heading);
   font-family: monospace;
-}
-
-.qr-code {
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
 }
 
 /* Attendee */
