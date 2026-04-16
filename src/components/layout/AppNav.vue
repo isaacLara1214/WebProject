@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import { useTheme } from '@/composables/useTheme'
 
 const router = useRouter()
 const auth = useAuthStore()
+const { theme, toggle } = useTheme()
 
 function logout() {
   auth.logout()
@@ -30,6 +32,13 @@ function logout() {
 
     <div class="nav-user">
       <template v-if="auth.currentUser">
+        <label class="theme-toggle" :title="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+          <input type="checkbox" class="theme-toggle-input" :checked="theme === 'light'" @change="toggle" />
+          <span class="theme-toggle-track">
+            <span class="theme-toggle-thumb" />
+          </span>
+          <i class="pi" :class="theme === 'dark' ? 'pi-moon' : 'pi-sun'" />
+        </label>
         <span class="user-name">{{ auth.currentUser.name }}</span>
         <span class="role-badge" :class="auth.currentUser.role">
           {{ auth.currentUser.role }}
@@ -37,6 +46,13 @@ function logout() {
         <button class="logout-btn" @click="logout">Logout</button>
       </template>
       <template v-else>
+        <label class="theme-toggle" :title="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+          <input type="checkbox" class="theme-toggle-input" :checked="theme === 'light'" @change="toggle" />
+          <span class="theme-toggle-track">
+            <span class="theme-toggle-thumb" />
+          </span>
+          <i class="pi" :class="theme === 'dark' ? 'pi-moon' : 'pi-sun'" />
+        </label>
         <RouterLink to="/login" class="login-link">Login</RouterLink>
       </template>
     </div>
@@ -132,5 +148,58 @@ function logout() {
   color: var(--vt-c-indigo);
   text-decoration: none;
   font-weight: 600;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.theme-toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-toggle-track {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+  background: var(--color-background-mute);
+  border: 1px solid var(--color-border-hover);
+  border-radius: 9999px;
+  transition: background 0.2s;
+}
+
+.theme-toggle-input:checked + .theme-toggle-track {
+  background: #818cf8;
+  border-color: #818cf8;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle-input:checked + .theme-toggle-track .theme-toggle-thumb {
+  transform: translateX(16px);
+}
+
+.theme-toggle .pi {
+  font-size: 0.85rem;
+  color: var(--color-text);
 }
 </style>
