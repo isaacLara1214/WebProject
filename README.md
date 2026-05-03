@@ -4,6 +4,7 @@ A web app for managing campus events. Organizers can create events and track att
 
 **Course:** CSC 437 — Final Project
 **Team:** Check In · Isaac Lara (ilara1@student.gsu.edu)
+**Live Site:** https://isaaclara1214.github.io/WebProject/
 
 ---
 
